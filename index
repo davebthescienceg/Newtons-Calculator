@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<body>
+<!--
+<img src="Newton.jpg" alt="Newton Image" style="width:304px;height:228px;">
+-->
+<!-- MASS1 -->
+<form >
+<input id="mass1" name="mass1" placeholder="" required="required" autofocus="autofocus" />
+<select id="mySelectMass1" onchange="selectionchangeMass1();" onmousedown="selectionchangeMass1();">
+    <option value="9.11e-31" > Mass of an Electron </option>
+    <option value="1.67e-27" > Mass of a Proton </option>
+    <option value="70" > Mass of a Human </option>
+    <option value="7.34e22" >Mass of the Moon</option>
+    <option value="5.972e24" >Mass of the Earth</option>
+    <option value="1.898e27" > Mass of Jupiter</option>
+    <option value="1.989e30" > Mass of the Sun </option>
+    <option value="2.4e40" > Mass of Largest Black Hole </option>
+</select>
+</form>
+
+<!-- Mass2-->
+<form >
+<input id="mass2" name="mass2" placeholder="" required="required" autofocus="autofocus" />
+<select id="mySelectMass2" onchange="selectionchangeMass2();" onmousedown="selectionchangeMass2();">
+    <option value="9.11e-31" > Mass of an Electron </option>
+    <option value="1.67e-27" > Mass of a Proton </option>
+    <option value="70" > Mass of a Human </option>
+    <option value="7.34e22" >Mass of the Moon</option>
+    <option value="5.972e24" >Mass of the Earth</option>
+    <option value="1.898e27" > Mass of Jupiter</option>
+    <option value="1.989e30" > Mass of the Sun </option>
+    <option value="2.4e40" > Mass of Largest Black Hole </option>
+</select>
+</form>
+
+
+<!-- Distance-->
+<form >
+<input id="distance" name="distance" placeholder="" required="required" autofocus="autofocus" />
+<select id="mySelectdistance" onchange="selectionchangedistance();" onmousedown="selectionchangedistance();">
+    <option value="5.29e-11" > Bohr radius (m) </option>
+    <option value="1" > 1 meter </option>
+    <option value="10" >10 meters </option>
+    <option value="6.371e6" >Radius of Earth </option>
+    <option value="3.844e8" >Distance to the Moon</option>
+    <option value="7.1e7" > Radius of Jupiter </option>
+    <option value="7.0e8" > Radius of the Sun </option>
+    <option value="1.5e11" >Earth/Sun mean distance </option>
+    <option value="9.46e15">One light-year </option>
+</select>
+</form>
+
+
+<button onclick="gravForce()">Calculate the Gravitational Force </button>
+
+<p id="demo"></p>
+
+<!-- Java Script Code-->
+<script>
+
+// Displays changes within the drop down menu for mass1.
+function selectionchangeMass1()
+{
+    var e = document.getElementById("mySelectMass1");
+    var str = e.options[e.selectedIndex].value;
+    document.getElementById('mass1').value = str;     
+}
+
+// Displays changes within the drop down menu for mass2.
+function selectionchangeMass2()
+{
+    var ee = document.getElementById("mySelectMass2");
+    var str1 = ee.options[ee.selectedIndex].value;
+    document.getElementById('mass2').value = str1;     
+}
+
+// Displays changes within the drop down menu for distance.
+function selectionchangedistance()
+{
+    var e = document.getElementById("mySelectdistance");
+    var str = e.options[e.selectedIndex].value;
+    document.getElementById('distance').value = str;     
+}
+
+
+
+
+
+
+function gravForce(){
+var mass1, mass2, distance, G, Force, g;
+
+mass1=document.getElementById("mySelectMass1").value;
+mass2=document.getElementById("mySelectMass2").value;
+distance = document.getElementById("mySelectdistance").value;
+
+mass1=parseFloat(mass1);
+mass2=parseFloat(mass2);
+distance=parseFloat(distance);
+G=6.67408e-11;
+
+Force = mass1*mass2*G/distance/distance;
+g = mass2*G/distance/distance;
+
+
+document.getElementById("demo").innerHTML=
+("The gravitational force between the above objects is " + Force.toPrecision(2) +  " <br> \r" 
++  "The gravitational acceleration caused by mass2 on mass1 is " + g.toPrecision(2) + "<br>" );
+
+ 
+
+
+}
+
+</script>
+
+
+</body>
+</html>
